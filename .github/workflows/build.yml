@@ -37,6 +37,9 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    permissions:                # Add this block
+      id-token: write           # Grant id-token: write permission
+      contents: read            # Ensure contents: read permission is present
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
