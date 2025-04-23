@@ -40,7 +40,6 @@ jobs:
       - name: Upload build output as artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          name: github-pages
           path: upload/  
 
   deploy:
@@ -50,11 +49,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: github-pages
-          path: dist/
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
