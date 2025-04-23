@@ -8,6 +8,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,10 +43,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    permissions:                # Add this block
-      id-token: write           # Grant id-token: write permission
-      contents: read            # Ensure contents: read permission is present
-      pages: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
