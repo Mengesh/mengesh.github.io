@@ -5,9 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.CI
-    ? "https://mengesh.github.io"
-    : "http://localhost:4321",
+  site: process.env.CI ? "https://mengesh.github.io" : "http://localhost:4321",
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
