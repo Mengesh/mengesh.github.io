@@ -2,6 +2,7 @@
   "name": "@area44/astro-shadcn-ui-template",
   "version": "25.01.27",
   "description": "An Astro template for building apps.",
+  "neverBuiltDependencies": []
   "author": {
     "name": "AREA44"
   },
