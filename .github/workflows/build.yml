@@ -40,7 +40,7 @@ jobs:
       - name: Upload build output as artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: upload/  
+          path: dist/  
 
   deploy:
     needs: build
