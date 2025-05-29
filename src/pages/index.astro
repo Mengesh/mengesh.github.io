@@ -2,9 +2,9 @@
 // Astro frontmatter
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { buttonVariants } from "@/components/ui/button";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-const allBlogPosts = await getCollection('blog');
+const allBlogPosts = await getCollection("blog");
 ---
                      <BaseLayout
                        title="Astro Shadcn UI Template"
