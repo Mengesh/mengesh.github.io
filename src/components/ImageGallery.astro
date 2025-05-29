@@ -12,7 +12,6 @@ const images = import.meta.glob<{ default: ImageMetadata }>(["/src/blog/*/*.jpg"
 const imagePaths = Object.keys(images).filter((imagePath) => {
   return imagePath.startsWith(`/src/${imageFolder}/`);
 });
-console.log(imagePaths)
 ---
 
                    <div

@@ -13,7 +13,7 @@ const allBlogPosts = await getCollection("blog");
                        <section class="container grid grid-cols-1 md:grid-cols-[250px_1fr] gap-8 pt-6 pb-8 md:py-10">
 
                          <!-- Sidebar with blog posts -->
-                         <aside class="bg-muted p-4 rounded-md">
+                         <aside class="p-4 rounded-md">
                            <h2 class="text-xl font-semibold mb-4">My Posts</h2>
                            <ul class="space-y-2">
                              {allBlogPosts.map(post => (
