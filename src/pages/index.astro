@@ -1,42 +1,61 @@
 ---
+// Astro frontmatter
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { buttonVariants } from "@/components/ui/button";
----
+import { getCollection } from 'astro:content';
 
-<BaseLayout
-  title="Astro Shadcn UI Template"
-  description="This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI."
->
-  <section class="container grid items-center gap-6 pt-6 pb-8 md:py-10">
-    <div class="flex max-w-[980px] flex-col items-start gap-2">
-      <h1
-        class="text-3xl leading-tight font-extrabold tracking-tighter md:text-4xl"
-      >
-        Astro Shadcn UI Template <br class="hidden sm:inline" />
-        built with Radix UI and Tailwind CSS.
-      </h1>
-      <p class="text-muted-foreground max-w-[700px] text-lg">
-        Accessible and customizable components that you can copy and paste into
-        your apps. Free. Open Source.
-      </p>
-    </div>
-    <div class="flex gap-4">
-      <a
-        href="https://ui.shadcn.com"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants()}
-      >
-        Documentation
-      </a>
-      <a
-        href="https://github.com/AREA44/astro-shadcn-ui-template"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants({ variant: 'outline' })}
-      >
-        GitHub
-      </a>
-    </div>
-  </section>
-</BaseLayout>
+const allBlogPosts = await getCollection('blog');
+---
+                     <BaseLayout
+                       title="Astro Shadcn UI Template"
+                       description="This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI."
+                     >
+                       <section class="container grid grid-cols-1 md:grid-cols-[250px_1fr] gap-8 pt-6 pb-8 md:py-10">
+
+                         <!-- Sidebar with blog posts -->
+                         <aside class="bg-muted p-4 rounded-md">
+                           <h2 class="text-xl font-semibold mb-4">My Posts</h2>
+                           <ul class="space-y-2">
+                             {allBlogPosts.map(post => (
+                               <li>
+                                 <a href={`/blog/${post.id}`} class="text-blue-600 hover:underline">
+                                   {post.data.title}
+                                 </a>
+                               </li>
+                             ))}
+                           </ul>
+                         </aside>
+
+                         <!-- Main content -->
+                         <div>
+                           <div class="flex max-w-[980px] flex-col items-start gap-2">
+                             <h1 class="text-3xl leading-tight font-extrabold tracking-tighter md:text-4xl">
+                               Astro Shadcn UI Template <br class="hidden sm:inline" />
+                               built with Radix UI and Tailwind CSS.
+                             </h1>
+                             <p class="text-muted-foreground max-w-[700px] text-lg">
+                               Accessible and customizable components that you can copy and paste into
+                               your apps. Free. Open Source.
+                             </p>
+                           </div>
+                           <div class="flex gap-4 mt-6">
+                             <a
+                               href="https://ui.shadcn.com"
+                               target="_blank"
+                               rel="noreferrer"
+                               class={buttonVariants()}
+                             >
+                               Documentation
+                             </a>
+                             <a
+                               href="https://github.com/AREA44/astro-shadcn-ui-template"
+                               target="_blank"
+                               rel="noreferrer"
+                               class={buttonVariants({ variant: 'outline' })}
+                             >
+                               GitHub
+                             </a>
+                           </div>
+                         </div>
+                       </section>
+                     </BaseLayout>
