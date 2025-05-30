@@ -14,49 +14,49 @@ const imagePaths = Object.keys(images).filter((imagePath) => {
 });
 ---
 
-                   <div
-	             id="gallery"
-	             class="container mx-auto px-2 pb-2 pl-0 pr-0 grid grid-cols-2 md:grid-cols-3 gap-5"
-                   >
-	             {
-		       imagePaths.map(async (imagePath) => {
-			 let image = images[imagePath]();
-			 let optimizedImage = await getImage({
-			   src: image,
-			   width: 1920,
-			 });
-
-			 return (
-			   <a
-			     href={optimizedImage.src}
-			     data-pswp-width={optimizedImage.attributes.width}
-			     data-pswp-height={optimizedImage.attributes.height}
-			     target="_blank"
-			     class="overflow-hidden hover:scale-110 duration-300 ease-in-out aspect-[3/2]"
-			   >
-			     <Image
-			       src={image}
-			       alt={"altText"}
-			       height={350}
-			       class={
-			       "object-cover w-full transition duration-300 ease-in-out aspect-[3/2]"
-			       }
-			     />
-			   </a>
-			 );
-		       })
-	             }
-                   </div>
-
-<script>
-  import PhotoSwipeLightbox from "photoswipe/lightbox";
-  import "photoswipe/style.css";
-
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: "#gallery",
-      children: "a",
-      pswpModule: () => import("photoswipe"),
+<div
+  id="gallery"
+  class="container mx-auto px-2 pb-2 pl-0 pr-0 grid grid-cols-2 md:grid-cols-3 gap-5"
+>
+  {
+  imagePaths.map(async (imagePath) => {
+  let image = images[imagePath]();
+  let optimizedImage = await getImage({
+  src: image,
+  width: 1920,
   });
 
-  lightbox.init();
+  return (
+  <a
+    href={optimizedImage.src}
+    data-pswp-width={optimizedImage.attributes.width}
+    data-pswp-height={optimizedImage.attributes.height}
+    target="_blank"
+    class="overflow-hidden hover:scale-110 duration-300 ease-in-out aspect-[3/2]"
+  >
+    <Image
+      src={image}
+      alt={"altText"}
+      height={350}
+      class={
+	  "object-cover w-full transition duration-300 ease-in-out aspect-[3/2]"
+	  }
+    />
+  </a>
+  );
+  })
+  }
+</div>
+
+<script>
+ import PhotoSwipeLightbox from "photoswipe/lightbox";
+ import "photoswipe/style.css";
+
+ const lightbox = new PhotoSwipeLightbox({
+   gallery: "#gallery",
+   children: "a",
+   pswpModule: () => import("photoswipe"),
+ });
+
+ lightbox.init();
 </script>
