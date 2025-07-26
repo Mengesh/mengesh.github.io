@@ -1,36 +1,25 @@
 ---
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { buttonVariants } from "@/components/ui/button";
 import { getCollection } from "astro:content";
+import ArtworkImageStripe from "@/components/ArtworkImageStripe.astro";
 
-const allBlogPosts = await getCollection("blog");
+const allArtworkPosts = await getCollection("artwork");
 ---
 <BaseLayout
   title="Astro Shadcn UI Template"
   description="This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI."
 >
-  <section class="w-full"> <!-- Removed container to allow full width -->
-
-    <div class="flex flex-col w-full"> <!-- Make flex direction column -->
-
-      {allBlogPosts.map(post => (
-      <div key={post.slug} class="w-full m-0 p-5">
+  <section class="w-full">
+    <div class="flex flex-col w-full">
+      {allArtworkPosts.map(post => (
+      <a href=`artwork/${post.data.slug}`>
+        <div class="w-full m-0 p-5">
           <h3 class="uppercase text-left text-6xl font-bold">{post.data.title}</h3>
           <p class="text-gray-500 text-left text-sm">{post.data.subtitle || post.data.title}</p>
         </div>
-        <div class="p-0 h-50 bg-[url(https://placehold.co/600x400)]">                    
-        </div>
-      </div>
+      </a>
+      <ArtworkImageStripe folderName={post.data.slug} />
       ))}
-
     </div>
   </section>
 </BaseLayout>
