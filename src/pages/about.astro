@@ -1,0 +1,16 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import AboutContent, {frontmatter} from "@/content/about.md";
+
+---
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+>
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <article class="prose prose-lg dark:prose-invert">
+      <h1 class="text-4xl font-bold mb-8">{frontmatter.title}</h1>
+      <AboutContent />
+    </article>
+  </main>
+</BaseLayout>
