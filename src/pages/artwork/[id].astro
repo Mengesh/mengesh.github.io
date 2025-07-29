@@ -11,7 +11,7 @@ props: { post },
 }));
 }
 
-const { post, images } = Astro.props;
+const { post } = Astro.props;
 const { Content } = await render(post);
 
 const postDir = `artwork/${post.id}`;
