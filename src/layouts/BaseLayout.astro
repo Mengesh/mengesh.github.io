@@ -4,17 +4,21 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 
 interface Props {
-  title?: string | undefined;
-  description?: string | undefined;
-  ogImage?: URL | undefined;
+title?: string | undefined;
+description?: string | undefined;
+ogImage?: URL | undefined;
 }
 
 const { title, description, ogImage } = Astro.props;
+
+const siteTitle = "Vuk Ćuk";
+const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+
 ---
 
 <html lang="en">
   <head>
-    <HeadSEO title={title} description={description} ogImage={ogImage} />
+    <HeadSEO title={fullTitle} description={description} ogImage={ogImage} />
     <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">    
   </head>
   <body class="bg-background min-h-screen font-sans antialiased">

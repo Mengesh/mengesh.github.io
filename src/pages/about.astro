@@ -3,10 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import AboutContent, {frontmatter} from "@/content/about.md";
 
 ---
-<BaseLayout
-  title="Astro Shadcn UI Template"
-  description="This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI."
->
+<BaseLayout title={frontmatter.title}>
   <section class="w-full"> <!-- Removed container to allow full width -->
     <div class="flex flex-col w-full"> <!-- Make flex direction column -->
 
