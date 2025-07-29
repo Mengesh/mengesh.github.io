@@ -4,13 +4,18 @@ import AboutContent, {frontmatter} from "@/content/about.md";
 
 ---
 <BaseLayout
-  title={frontmatter.title}
-  description={frontmatter.description}
+  title="Astro Shadcn UI Template"
+  description="This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI."
 >
-  <main class="container mx-auto px-4 py-8 max-w-4xl">
-    <article class="prose prose-lg dark:prose-invert">
-      <h1 class="text-4xl font-bold mb-8">{frontmatter.title}</h1>
-      <AboutContent />
-    </article>
-  </main>
+  <section class="w-full"> <!-- Removed container to allow full width -->
+    <div class="flex flex-col w-full"> <!-- Make flex direction column -->
+
+      <div class="w-full m-0 p-5">
+        <h3 class="uppercase text-left text-6xl font-bold">{frontmatter.title}</h3>
+        <article class="prose max-w-4xl py-8">
+          <AboutContent />
+        </article>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
