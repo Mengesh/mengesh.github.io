@@ -14,8 +14,8 @@ const allArtworkPosts = await getCollection("artwork");
           <h3 class="uppercase text-left text-6xl font-bold">{post.data.title}</h3>
           <p class="text-gray-500 text-left text-sm">{post.data.subtitle}</p>
         </div>
+        <ArtworkImageStripe folderName={post.data.slug} />
       </a>
-      <ArtworkImageStripe folderName={post.data.slug} />
       ))}
     </div>
   </section>
