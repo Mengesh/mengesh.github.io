@@ -6,9 +6,10 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
 folderName: string;
+link: string;
 }
 
-const { folderName } = Astro.props;
+const { folderName, link } = Astro.props;
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
 ["/src/artwork/*/*.jpg", "/src/artwork/*/*.png"]
@@ -87,24 +88,26 @@ alt: path.split("/").pop() || "image",
 </style>
 
 <div class="scroll-wrapper">
-  <div class="scroll-container" id={`stripe-${folderName}`}>
-    {
+  <a href={link}>
+    <div class="scroll-container" id={`stripe-${folderName}`}>
+      {
       (() => {
-        const totalWidth = images.reduce((sum, img) => sum + img.width, 0);
-        return images.map((img) => {
-          const flexGrow = img.width / totalWidth;
-          return (
-            <img
-              src={img.src}
-              alt={img.alt}
-              style={{ flexGrow }}
-              loading="lazy"
-            />
-          );
-        });
+      const totalWidth = images.reduce((sum, img) => sum + img.width, 0);
+      return images.map((img) => {
+      const flexGrow = img.width / totalWidth;
+      return (
+      <img
+        src={img.src}
+        alt={img.alt}
+        style={{ flexGrow }}
+        loading="lazy"
+      />
+      );
+      });
       })()
-    }
-  </div>
+      }
+    </div>
+  </a>
 
   <div class="button-row">
     <button class="scroll-button" onclick={`scrollStripe('${folderName}', 'left')`}><Icon name="mdi:chevron-left" /></button>
